@@ -21,7 +21,7 @@ pipeline {
 
         stage("push") {
             steps {
-                echo ${DOCKERHUB_CREDS}
+                echo "${DOCKERHUB_CREDS}"
             }
         }
     }
