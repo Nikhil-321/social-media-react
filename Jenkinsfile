@@ -1,5 +1,8 @@
 pipeline {
-    agent { docker { image 'docker:27.4.1-cli-alpine3.21' } }
+    agent { docker { 
+        image 'docker:27.4.1-cli-alpine3.21'
+        args '-v /var/run/docker.sock:/var/run/docker.sock'     
+         }}
     stages {
         stage("checkout") {
             steps {
