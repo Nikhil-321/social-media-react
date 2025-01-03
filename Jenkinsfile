@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = 'nikhilvivaops/react-app'
+        DOCKERHUB_CREDS = credentials("dockerhub")
     }
     stages {
         stage("checkout") {
@@ -15,6 +16,12 @@ pipeline {
             steps {
                 sh "docker build -t ${env.IMAGE_NAME} ."
                 echo "Image build successful"
+            }
+        }
+
+        stage("push") {
+            steps {
+                echo ${DOCKERHUB_CREDS}
             }
         }
     }
