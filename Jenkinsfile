@@ -17,9 +17,6 @@ pipeline {
                 echo "Image build successful"
             }
         }
-        stage("push") {
-
-        }
     }
 
 }
