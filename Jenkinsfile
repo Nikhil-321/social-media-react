@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        IMAGE_NAME = 'nikhilvivaops/react-app'
+    }
     stages {
         stage("checkout") {
             steps {
@@ -10,9 +13,12 @@ pipeline {
         stage("build") {
             environment { HOME = "${env.WORKSPACE}" }
             steps {
-                sh 'docker build -t nikhilvivaops/react-app .'
+                sh "docker build -t ${env.IMAGE_NAME} ."
                 echo "Image build successful"
             }
+        }
+        stage("push") {
+
         }
     }
 
