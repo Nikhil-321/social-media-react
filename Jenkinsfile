@@ -11,6 +11,7 @@ pipeline {
             }
         }
         stage("build") {
+            environment { HOME = "${env.WORKSPACE}" }
             steps {
                 sh 'docker build -t nikhilvivaops/react-app .'
                 echo "Image build successful"
