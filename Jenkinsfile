@@ -15,7 +15,7 @@ pipeline {
         stage("build") {
             environment { HOME = "${env.WORKSPACE}" }
             steps {
-                build()
+                buildApp()
             }
         }
 
