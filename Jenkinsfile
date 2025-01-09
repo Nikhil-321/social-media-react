@@ -15,18 +15,14 @@ pipeline {
         stage("build") {
             environment { HOME = "${env.WORKSPACE}" }
             steps {
-                sh "docker build -t ${env.IMAGE_NAME} ."
-                echo "Image build successful"
+                build()
             }
         }
 
         stage("push") {
             steps {
                 script {
-                    sh """
-                    echo ${DOCKERHUB_CREDS_PSW} | docker login -u ${DOCKERHUB_CREDS_USR} --password-stdin
-                    docker push ${env.IMAGE_NAME} 
-                     """
+                  pushtoDockerHub()
                 }
             }
         }
